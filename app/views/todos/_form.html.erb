@@ -1,0 +1,32 @@
+<% if @todo.errors.present? %>
+  <ol>
+    <% @todo.errors.each do |error, message| %>
+      <li> <%= "#{error.capitalize}  #{message}" %></li>
+    <% end %>
+  </ol>
+<% end %>
+
+<div class="form container">
+  <%= form_for @todo do |f| %>
+    <div class="form_group">
+      <%= f.label :name ,"Name"%>
+      <%= f.text_field :name ,class: "form-control" %>
+    </div>
+    <div class="form_group">
+      <%= f.label :due_date ,"Due Date"%>
+      <%= f.text_field :due_date ,class: "form-control" %>
+    </div>
+    <div class="form_group">
+      <%= f.label :note ,"Note"%>
+      <%= f.text_area :note ,class: "form-control" %>
+    </div>
+  
+
+  <%= f.submit %>
+<% end %>
+</div>
+
+<br />
+<div class="container form-group">
+  <%= link_to "<span class='glyphicon glyphicon-home'></span>  Back to Home Page".html_safe, todos_path, class: "btn btn-primary" %>
+</div>
